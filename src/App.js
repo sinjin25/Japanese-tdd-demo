@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Sample from './components/sample'
-import InputConvert from '@/components/input-converter'
+import InputConvert from '@/components/input-converter/InputConvert'
 
 function App() {
   return (
