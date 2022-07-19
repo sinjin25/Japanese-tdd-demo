@@ -42,3 +42,5 @@ function hiraganaFlow(input) {
     .replace(/nn/, 'n')
     return toKana(modifiedInp).replace('*', 'n')
 }
+
+export default convertToJp

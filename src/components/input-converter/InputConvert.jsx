@@ -1,11 +1,19 @@
-import x from '@/js/jp-input'
+import converter from '@/js/jp-input'
+import { useState } from 'react'
 
-export default () => {
+export default ({placeholderText}) => {
 
-    const test = (e) => {
-        console.log(e)
+    let [value, setValue] = useState('')
+
+    const handleChange = (e) => {
+        const {target} = e
+        const v = target.value
+        setValue(converter(v, false))
     }
     return (
-        <input onChange={test} />
+        <input
+        value={value}
+        placeholder={placeholderText || 'Type a word'}
+        onChange={handleChange} />
     )
 }
