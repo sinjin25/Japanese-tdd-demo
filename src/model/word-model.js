@@ -1,5 +1,3 @@
-import deepcopy from 'deepcopy'
-
 export class Word {
     DUP_READING = 'duplicate reading key for item'
     BAD_IMPORTANCE = 'wrong type for importance'

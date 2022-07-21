@@ -1,4 +1,4 @@
-import converter from '@/js/jp-input'
+import converter from '../../js/jp-input'
 import { useState } from 'react'
 
 export default ({placeholderText}) => {
