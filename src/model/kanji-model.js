@@ -1,3 +1,5 @@
+import deepcopy from "deepcopy"
+
 export default class Kanji {
     ERR_NOT_KANJI = 'A kanji compound must be exactly one character'
     DUP_READING = 'Attempted to add duplicate reading'
@@ -48,7 +50,7 @@ export default class Kanji {
     consume() {
         return {
             label: this.kanji,
-            data: this.data,
+            data: deepcopy(this.data),
         }
     }
     // verify
