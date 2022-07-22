@@ -10,38 +10,46 @@
         display: inline-block;
         --primary: #c61fc6;
         --tt: #c1c1c1;
-        .kanji-hover {
-            display: none;
+        /* .kanji-hover {
+            visibility: hidden;
+            opacity: .2;
         }
         &:hover {
             .kanji-hover {
-                display: block;
+                visibility: visible;
+                opacity: 1;
             }
-        }
+        } */
     }
     &-hover {
         position: absolute;
-        bottom: 100%;
-        left: -1.5rem;
-        right: -1.5rem;
-        margin-bottom: 1rem;
-        border-radius: 0.25em;
-        background: var(--tt);
-        color: white;
-        text-align: left;
-        padding: 0.5em;
-        &:after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            width: 0; 
-            height: 0; 
-            margin: auto;
-            border-left: .5em solid transparent;
-            border-right: .5em solid transparent;
-            border-top: .5em solid var(--tt);
+        bottom: 0;
+        left: -4.5rem;
+        right: -4.5rem;
+        padding: 1rem 3rem;
+        padding-bottom: 100%;
+        &__inner {
+            position: relative;
+            inset: 0;
+            border-radius: 0.25em;
+            background: var(--tt);
+            color: white;
+            text-align: left;
+            padding: 0.5em;
+            &:after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                width: 0; 
+                height: 0; 
+                margin: auto;
+                border-left: .5em solid transparent;
+                border-right: .5em solid transparent;
+                border-top: .5em solid var(--tt);
+                transition: 5s ease-out all;
+            }
         }
     }
 }
