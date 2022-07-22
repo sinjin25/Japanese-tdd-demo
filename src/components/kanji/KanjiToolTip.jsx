@@ -15,7 +15,7 @@ export default function({readArr, defArr, visible}) {
 
     const style = () => {
         return {
-            visibility: visible ? 'visible' : 'hidden'
+            display: visible ? 'block' : 'none'
         }
     }
     return (
