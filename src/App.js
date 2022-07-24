@@ -1,40 +1,31 @@
-import logo from './logo.svg';
 import './App.scss';
-import Sample from './components/sample'
-import InputConvert from './components/input-converter/InputConvert'
 import Word from './components/word/Word'
-import Kanji from './components/kanji/Kanji'
-import KanjiModel from './model/kanji-model'
+import Kanji from './components/single/kanji/Kanji'
 import { useState, useEffect } from 'react';
+import burnerWord from './js/burner-word'
 
 function App() {
-  function createKanji() {
-    const sample = new KanjiModel('好')
-    sample.addReading('コウ')
-    sample.addDefinitions('like', 'fond of')
-    return sample.consume()
-  }
-
-  const [kData, setKData] = useState(null)
 
   useEffect(() => {
-    setKData(createKanji())
   }, [])
 
-  const buildKanji = () => {
-    if (!kData) return
-    return (<Kanji
-      kanji={kData.label}
-      defs={kData.data.readings}
-      readings={kData.data.definitions}
+  const buildWord = () => {
+    if (!burnerWord) return
+    console.log('!!!', burnerWord)
+    const data = burnerWord.consume()
+    const data2 = burnerWord.consumeKanji()
+    console.log(data, data2)
+    return (<Word
+      label={burnerWord.kanji}
+      data={data.data}
+      kanjiInfo={data2}
     />)
   }
 
   return (
     <div className="App">
-      <Word str="好き"/>
       <div>
-        {buildKanji()}
+        {buildWord()}
       </div>
     </div>
   );
