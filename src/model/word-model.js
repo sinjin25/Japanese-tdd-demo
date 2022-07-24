@@ -46,6 +46,7 @@ export class WordEntry {
     constructor(importance) {
         this.importance = importance
         this.data = []
+        this.kanjiData = {}
     }
     // API
     append(pos, definitions) {
@@ -57,10 +58,15 @@ export class WordEntry {
             definitions,
         })
     }
+    // TODO: Add real appendKanji
+    appendKanji(model) {
+        this.kanji[model.kanji] = model
+    }
     consume(label) {
         return {
             label: label || null,
             data: this.data,
+            kanjiData: this.kanjiData,
             importance: this.importance,
         }
     }
