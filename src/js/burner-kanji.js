@@ -1,8 +1,8 @@
-import Kanji from '../model/kanji-model'
-export const kanojo1 = new KanjiModel('好')
-kanojo1.addDefinitions('fond of', 'like')
-kanojo1.addReading('コウ')
+import KanjiModel from '../model/kanji-model'
+export const kanojo1 = new KanjiModel('彼')
+kanojo1.addDefinitions('he;that;the')
+kanojo1.addReading('かの')
 
-export const kanojo2 = new KanjiModel('好')
-kanojo2.addDefinitions('fond of', 'like')
-kanojo2.addReading('コウ')
+export const kanojo2 = new KanjiModel('女')
+kanojo2.addDefinitions('woman')
+kanojo2.addReading('ジョ')

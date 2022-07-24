@@ -1,7 +1,7 @@
-import {Word} from '../model/word-model'
+import {Word as WordModel} from '../model/word-model'
 import { kanojo1, kanojo2 } from './burner-kanji'
 
-export const aRandomWord = new WordModel('彼女')
+const aRandomWord = new WordModel('彼女')
 aRandomWord.appendReading('かのじょ', 0)
 aRandomWord.appendDefinition(
     'かのじょ',
@@ -10,3 +10,5 @@ aRandomWord.appendDefinition(
 )
 aRandomWord.appendKanji(kanojo1)
 aRandomWord.appendKanji(kanojo2)
+
+export default aRandomWord

@@ -1,5 +1,7 @@
 import { test, expect } from '@jest/globals'
 import {Word, WordEntry} from '../model/word-model'
+import aWord from '../js/burner-word'
+import { kanojo1, kanojo2 } from '../js/burner-kanji'
 
 describe('Word Model', () => {
     let word
@@ -47,6 +49,24 @@ describe('Word Model', () => {
 
         // should create a fresh copy to prevent mutation
         expect(word.consume().length).toBe(word.sorting.length)
+    })
+
+    test('Can append kanji information?', () => {
+        const word = new Word('彼女')
+        word.appendKanji(kanojo1)
+        word.appendKanji(kanojo2)
+
+        expect(Object.keys(word.kanjiData).length).toBe(2)
+    })
+
+    test('Should be able to consume kanji information', () => {
+        const word = new Word('彼女')
+        word.appendKanji(kanojo1)
+        word.appendKanji(kanojo2)
+
+        const consumed = word.consumeKanji()
+        expect(Array.isArray(consumed)).toBe(true)
+        expect(consumed.length).toBe(2)
     })
 })
 

@@ -4,6 +4,7 @@ export class Word {
     constructor(word) {
         this.kanji = word
         this.data = {}
+        this.kanjiData = {}
         this.sorting = []
     }
     // API
@@ -18,11 +19,20 @@ export class Word {
     appendDefinition(reading, pos, definitions) {
         this.data[reading].append(pos, definitions)
     }
+    appendKanji(entry) {
+        this.kanjiData[entry.kanji] = entry
+    }
     consume() {
         const consumableData = this.sorting.map((aKey) => {
             // convert this to a class or something
             return this.data[aKey].consume(aKey)
         })
+        console.log('consume', consumableData)
+        return consumableData
+    }
+    consumeKanji() {
+        const keys = Object.keys(this.kanjiData)
+        const consumableData = keys.map((i) => this.kanjiData[i].consume())
         return consumableData
     }
     // PRIVATE USE
