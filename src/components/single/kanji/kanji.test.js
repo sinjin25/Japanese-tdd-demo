@@ -1,5 +1,5 @@
 import { screen, render, fireEvent, debug } from '@testing-library/react'
-import KanjiModel from '../../model/kanji-model'
+import KanjiModel from '../../../model/kanji-model'
 import Kanji from './Kanji'
 import { test, expect, describe} from '@jest/globals'
 import { BrowserRouter } from 'react-router-dom'

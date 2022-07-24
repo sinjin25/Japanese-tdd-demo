@@ -1,7 +1,9 @@
-export default function({str, components}) {
+export default function({label, data}) {
+    
     return (
         <div>
-            <h2>{str}</h2>
+            <div>123S</div>
+            <h2>{label}</h2>
         </div>
     )
 }
