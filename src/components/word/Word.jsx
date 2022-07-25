@@ -2,7 +2,6 @@ import { isKanji } from 'wanakana'
 import Kanji from '../single/kanji/Kanji'
 export default function({label, data, kanjiInfo}) {
     
-    // TODO: Convert label to kanji info
     const displayWord = () => {
         const results = []
         for (let i = 0; i < label.length; i++) {
