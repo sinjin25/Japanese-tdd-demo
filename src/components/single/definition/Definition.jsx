@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import './Definition.scss'
 import { pipe, pipeMethod, capitalizeFirst } from '../../../js/pipe'
 
-export default function({entries}) {
+export default function({className="", entries}) {
     useEffect(() => {
         console.log('%centries', 'border: 2px solid blue', entries)
     }, [])
@@ -47,7 +47,7 @@ export default function({entries}) {
     }
 
     return (
-        <div className="definition">
+        <div className={'definition ' + className}>
             {printEntries()}
         </div>
     )
