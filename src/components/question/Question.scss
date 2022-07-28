@@ -1,0 +1,15 @@
+.question {
+    padding: 1em;
+    &-inner {
+        padding: 2rem 0;
+        border: solid 2px black;
+        border-radius: 2em;
+    }
+    &-defs {
+        margin: 0 auto;
+        max-width: 60ch;
+    }
+    &-main {
+        font-size: 1.25rem;
+    }
+}
