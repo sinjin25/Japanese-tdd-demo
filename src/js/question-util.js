@@ -19,7 +19,6 @@ const matchReading = (input, model) => {
 }
 
 const matchDefinition = (input, key, model) => {
-    console.log('DEBUG' , input, key, model)
     if (!model.data[key]) throw Error(`key ${input} not found`)
     const data = model.data[key].data
 
@@ -33,6 +32,5 @@ const matchDefinition = (input, key, model) => {
             })
         })
     })
-    if (found) console.warn('found')
     return !!found
 }
