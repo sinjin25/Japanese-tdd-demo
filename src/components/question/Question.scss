@@ -12,4 +12,20 @@
     &-main {
         font-size: 1.25rem;
     }
+    &-input {
+        &.--failure {
+            background: red;
+            color: white;
+            &::placeholder {
+                color: white;
+            }
+        }
+        &.--success {
+            background: green;
+            color: white;
+            &::placeholder {
+                color: white;
+            }
+        }
+    }
 }

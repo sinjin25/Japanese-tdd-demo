@@ -3,7 +3,6 @@ import Word from '../word/Word'
 import Definition from '../single/definition/Definition'
 import './Question.scss'
 import React from 'react'
-import { checkAnswer } from '../../js/question-util'
 import QuestionInput from './input/QuestionInput'
 
 export default class Question extends React.Component {
