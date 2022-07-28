@@ -2,12 +2,14 @@ import converter from '../../../js/jp-input'
 import { useState } from 'react'
 
 export default ({
+    className = '',
     placeholderText,
     convertToJp = false,
     typable = true,
+    clearOnSubmit = false,
     hSubmit
 }) => {
-
+// TODO: don't clear until second run of finalize
     let [value, setValue] = useState('')
 
     const handleChange = (e) => {
@@ -24,6 +26,7 @@ export default ({
                 const valueToSend = finalize()
                 console.log('handlekey', valueToSend)
                 hSubmit(valueToSend)
+                if (clearOnSubmit) setValue('')
             }
             return
         }
@@ -38,13 +41,12 @@ export default ({
 
     const finalize = () => {
         const finalVal = value
-        setValue('')
-        console.log('finalizing val', finalVal)
         return finalVal
     }
     
     return (
         <input
+        className={className}
         value={value}
         placeholder={placeholderText || 'Type a word'}
         onKeyDown={handleKeyDown}
