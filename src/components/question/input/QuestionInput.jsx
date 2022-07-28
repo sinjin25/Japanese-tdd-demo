@@ -9,33 +9,36 @@ function QuestionInput({ word, mode, onFinish }) {
     inJpModeRef.current = inJpMode
     let [typable, settypable] = useState(true)
     let [roll, setroll] = useState()
-    let [answerWasCorrect, setanswerWasCorrect] = useState(false)
-    const answerWasCorrectRef = useRef(false)
-    answerWasCorrectRef.current = answerWasCorrect
-    let [answeredWith, setansweredWith] = useState('')
+    let [lastAnswer, setlastAnswer] = useState({
+        answeredWith: undefined,
+        wasCorrect: false,
+    })
+    const lastAnswerRef = useRef(false)
+    lastAnswerRef.current = lastAnswer
 
     const evaluateAnswer = (v) => {
+        console.log('evalute answer with', lastAnswerRef.current)
         const result = checkAnswer({
             input: v,
-            key: answeredWith || undefined,
+            key: lastAnswerRef.current.answeredWith || undefined,
             model: word,
         })
-        trackAnswer(result, v)
+        const toChange = { wasCorrect: result }
+        if (result === true) {
+            if (inJpModeRef.current === true) {
+                toChange.answeredWith = v
+            } else {
+                toChange.answeredWith = undefined
+            }
+        }
+        console.log('I am confused', {...lastAnswer, ...toChange})
+        setlastAnswer((prev) => ({...prev, ...toChange}))
+        console.log('after set', lastAnswerRef.current)
         settypable(false)
     }
 
-    const trackAnswer = (correct, value) => {
-        console.log('TRACK ANSWER', correct, value)
-        setanswerWasCorrect(correct)
-        // record answered with value
-        console.log('TRACK2', inJpModeRef.current)
-        if (inJpModeRef.current === true) setansweredWith(value)
-        else console.log('WE ARENT IN JP MODE???', inJpMode)
-    }
-
     const reset = () => {
-        console.log('reste sending up', answerWasCorrect, 'vs', answerWasCorrectRef.current)
-        bubbleUp(answerWasCorrectRef.current)
+        bubbleUp(lastAnswerRef.current.wasCorrect)
         settypable(true)
     }
 
@@ -55,6 +58,10 @@ function QuestionInput({ word, mode, onFinish }) {
     }, [])
 
     useEffect(() => {
+        console.log('%clast answer got changed to ', 'font-weight: bold;', lastAnswer )
+    }, [lastAnswer])
+
+    useEffect(() => {
         console.log('mode changed to', mode)
 
         // FIXME: so this is where the stale closure begins (was false, now true)
@@ -64,7 +71,7 @@ function QuestionInput({ word, mode, onFinish }) {
     const stylingQuestionInput = () => {
         const styles = ['question-input']
         if (!typable) {
-            if (answerWasCorrect) styles.push('--success')
+            if (lastAnswer.wasCorrect) styles.push('--success')
             else styles.push('--failure')
         }
         return styles.join(' ')

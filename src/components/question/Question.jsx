@@ -22,7 +22,6 @@ export default class Question extends React.Component {
     const { word } = this.state
     const data = word.consume()
     const data2 = word.consumeKanji()
-    console.log(data, data2)
 
     return (<Word
       label={word.kanji}
@@ -32,11 +31,11 @@ export default class Question extends React.Component {
   }
 
   nextQuestion = (wasCorrect) => {
+    console.log('nextq', wasCorrect)
+    
     const onCorrect = this.state.mode === 'reading' ? 'meaning' : 'reading'
-    console.log('NEXT QUESTION', wasCorrect)
     
     if (wasCorrect) {
-      console.log('THIS SHOULD CHANGE')
       if (this.state.mode === 'meaning') {
         // TODO: should switch questions if the mode was 'meaning'
       }
@@ -50,15 +49,7 @@ export default class Question extends React.Component {
   
 
   // this is out of sync
-  stylingQuestionInput = () => {
-    const { inputTypable, lastResult } = this.state
-    const styles = ['question-input']
-    if (inputTypable) {
-      if (lastResult.wasCorrect) styles.push('--success')
-      else styles.push('--failure')
-    }
-    return styles.join(' ')
-  }
+  
 
   render() {
     const { word } = this.state
@@ -70,7 +61,10 @@ export default class Question extends React.Component {
           <div className="question-main">
             {this.buildWord()}
           </div>
-          <QuestionInput word={word} mode={this.state.mode} onFinish={this.nextQuestion}/>
+          <QuestionInput
+          word={word}
+          mode={this.state.mode}
+          onFinish={this.nextQuestion}/>
           <Definition
             entries={word.consume()}
           />
