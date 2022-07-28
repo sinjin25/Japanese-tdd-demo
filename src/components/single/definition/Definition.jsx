@@ -3,9 +3,6 @@ import './Definition.scss'
 import { pipe, pipeMethod, capitalizeFirst } from '../../../js/pipe'
 
 export default function({className="", entries}) {
-    useEffect(() => {
-        console.log('%centries', 'border: 2px solid blue', entries)
-    }, [])
 
     const printEntry = (data) => {
         const definition = (defsArray) => {

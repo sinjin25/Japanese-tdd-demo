@@ -27,7 +27,6 @@ export class Word {
             // convert this to a class or something
             return this.data[aKey].consume(aKey)
         })
-        console.log('consume', consumableData)
         return consumableData
     }
     consumeKanji() {
